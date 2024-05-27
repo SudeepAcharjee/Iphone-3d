@@ -42737,7 +42737,7 @@ var __webpackgi_exports__ = {};
         isDiamondMaterialParameters: !0,
         generator: (e, t) => {
           const r = new Zo(e);
-          return r.envMap = l(), t && t !== {} && r.copyProps(t), r;
+          return r.envMap = l(), Object.keys(t).length !== 0 && r.copyProps(t), r;
         }
       }), super.onAdded(e);
     }
@@ -59742,7 +59742,12 @@ gl_FragColor = packDepthToRGBA(mix(last, shadow, opacity));
         var r;
         if (t.getExtension(on)) {
           const t = null === (r = e.jsonDoc.json.scenes) || void 0 === r ? void 0 : r[e.jsonDoc.json.scene || 0];
-          t && this._viewerConfig !== {} && (t.extensions = t.extensions || {}, t.extensions[on] = this._viewerConfig, this._texturesRef = [], this._viewerConfig = {});
+          if (t && Object.keys(this._viewerConfig).length > 0) {
+            t.extensions = t.extensions || {};
+            t.extensions[on] = this._viewerConfig;
+            this._texturesRef = [];
+            this._viewerConfig = {};
+          }
         }
       }), this;
     }
